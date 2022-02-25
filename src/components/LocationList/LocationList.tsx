@@ -12,8 +12,8 @@ const LocationList: FC<PropsType> = ({locations}) => {
   return (
     <ul className={classes.LocationList}>
       {
-        locations.map(location => (
-          <Location key={location.id} location={location}/>
+        locations.map((location, index) => (
+          <Location key={location.id} index={index} location={location}/>
         ))
       }
     </ul>
