@@ -1,8 +1,9 @@
 import {useCallback, useState} from "react";
 import axios from "axios";
+import {ISearchedLocation} from "../types";
 
 const useSearchLocation = () => {
-  const [locations, setLocations] = useState([])
+  const [locations, setLocations] = useState<ISearchedLocation[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [error, setError] = useState<unknown>({} as unknown)
 
