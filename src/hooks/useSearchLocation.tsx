@@ -5,13 +5,13 @@ import {ISearchedLocation} from "../types";
 const useSearchLocation = () => {
   const [locations, setLocations] = useState<ISearchedLocation[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [error, setError] = useState<unknown>({} as unknown)
+  const [error, setError] = useState<string>("")
 
   const searchLocation = useCallback(
     async (query: string) => {
       try {
         setIsLoading(true)
-        setError({})
+        setError("")
 
         const response = await axios({
           method: 'GET',
@@ -23,16 +23,21 @@ const useSearchLocation = () => {
           }
         })
 
-        setLocations(response.data)
-      } catch (err: unknown) {
-        setError(err)
+        if(!response.data.length) {
+          setError("Not found any locations")
+        } else {
+          setLocations(response.data)
+        }
+
+      } catch (err: any) {
+        console.log(err.message)
+        setError(err.message)
       }
       finally {
         setIsLoading(false)
       }
     }, []
   )
-
 
   return {error, isLoading, locations, searchLocation}
 }
