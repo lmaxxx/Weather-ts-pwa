@@ -1,6 +1,7 @@
 import classes from './LocationList.module.scss'
 import {FC} from 'react'
 import {ISearchedLocation} from '../../types'
+import Location from "../Location/Location";
 
 interface PropsType {
   locations: ISearchedLocation[]
@@ -12,11 +13,7 @@ const LocationList: FC<PropsType> = ({locations}) => {
     <ul className={classes.LocationList}>
       {
         locations.map(location => (
-          <li
-            key={location.id}
-          >
-            {location.name} {"/" && location.region} / {location.country}
-          </li>
+          <Location key={location.id} location={location}/>
         ))
       }
     </ul>
