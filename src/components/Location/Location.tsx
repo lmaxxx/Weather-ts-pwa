@@ -7,6 +7,7 @@ import {Box, Heading, Text} from "@chakra-ui/react";
 interface PropsType {
   location: ISearchedLocation
   index: number
+  redirectToLocation: () => void
 }
 
 const locationVariants = {
@@ -26,7 +27,7 @@ const locationVariants = {
   }
 }
 
-const Location: FC<PropsType> = ({location, index}) => {
+const Location: FC<PropsType> = ({location, index, redirectToLocation}) => {
   return (
     <motion.li
       className={classes.Location}
@@ -35,6 +36,7 @@ const Location: FC<PropsType> = ({location, index}) => {
       animate={"animate"}
       custom={index}
       whileHover={"hover"}
+      onClick={redirectToLocation}
     >
       <Box p={2} shadow='md' w={400} mt={3} borderWidth='1px' rounded='md'>
         <Heading fontSize='ld'>{location.name}</Heading>
