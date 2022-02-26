@@ -1,3 +1,10 @@
+export type UnitOfTemperature = "f" | "c"
+
+export interface IUnitOfTemperatureContext {
+  unitOfTemperature: UnitOfTemperature
+  setUnitOfTemperature: (newUnit: UnitOfTemperature) => void
+}
+
 interface IBaseLocation {
   name: string
   region: string
@@ -108,5 +115,7 @@ interface IDayForecast {
 export interface IForecast {
   location: IForecastLocation
   current: ICurrentForecast
-  forecast: IDayForecast[]
+  forecast: {
+    forecastday :IDayForecast[]
+  }
 }
