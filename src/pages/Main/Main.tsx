@@ -9,6 +9,12 @@ const Main = () => {
   const {locations, isLoading, searchLocation, error} = useSearchLocation()
   const toast = useToast()
 
+  useEffect(() => {
+    const lastQuery = localStorage.getItem("lastQuery")
+
+    if(lastQuery) searchLocation(lastQuery)
+  }, []);
+
 
   useEffect(() => {
     if(error) {

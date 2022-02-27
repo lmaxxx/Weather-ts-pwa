@@ -27,6 +27,7 @@ const useSearchLocation = () => {
           setError("Not found any locations")
         } else {
           setLocations(response.data)
+          localStorage.setItem("lastQuery", query)
         }
 
       } catch (err: any) {
