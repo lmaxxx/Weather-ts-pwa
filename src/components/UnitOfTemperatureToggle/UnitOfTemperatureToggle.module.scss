@@ -1,0 +1,14 @@
+.UnitOfTemperatureToggle {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.8rem;
+  background-color: #2b6cb0;
+  color: #fff;
+  cursor: pointer;
+}
