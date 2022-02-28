@@ -4,7 +4,7 @@ import axios from "axios";
 
 const useForecast = () => {
   const [forecast, setForecast] = useState<IForecast>({} as IForecast)
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
   const [error, setError] = useState<string>("")
 
   const getForecast = useCallback(
