@@ -10,7 +10,7 @@ interface PropsType {
 const Region: FC<PropsType> = ({region, country, ...rest}) => {
   return (
     <Text {...rest}>
-      {region.trim() && `${region} / `}
+      {region?.trim() && `${region} / `}
       {country}
     </Text>
   )
