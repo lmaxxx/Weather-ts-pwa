@@ -47,6 +47,10 @@ interface IBaseForecast {
   cloud: number
   feelslike_c: number
   feelslike_f: number
+  vis_km: number
+  vis_miles: number
+  gust_mph: number
+  gust_kph: number
 }
 
 interface IHourForecast extends IBaseForecast{
@@ -62,13 +66,9 @@ interface IHourForecast extends IBaseForecast{
   chance_of_rain: number
   will_it_snow: number
   chance_of_snow: number
-  vis_km:10
-  vis_miles: number
-  gust_mph: number
-  gust_kph: number
 }
 
-interface ICurrentForecast extends IBaseForecast {
+export interface ICurrentForecast extends IBaseForecast {
   last_updated_epoch: number
   last_updated: string
 }
@@ -118,4 +118,10 @@ export interface IForecast {
   forecast: {
     forecastday :IDayForecast[]
   }
+}
+
+export interface IDetail {
+  name: string
+  value: string | number
+  unit: string
 }
