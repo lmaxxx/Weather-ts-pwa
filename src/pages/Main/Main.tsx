@@ -4,6 +4,16 @@ import useSearchLocation from "../../hooks/useSearchLocation";
 import {useEffect} from "react";
 import LocationList from "../../components/LocationList/LocationList";
 import {useToast} from "@chakra-ui/react";
+import {motion} from "framer-motion";
+
+const variants = {
+  exit: {
+    x: "-100%",
+    transition: {
+      duration: .7
+    }
+  }
+}
 
 const Main = () => {
   const {locations, isLoading, searchLocation, error} = useSearchLocation()
@@ -30,10 +40,10 @@ const Main = () => {
   }, [error])
 
   return (
-    <div className={classes.Main}>
+    <motion.div variants={variants} exit={"exit"} className={classes.Main}>
       <LocationForm isLoading={isLoading} searchLocation={searchLocation}/>
       <LocationList locations={locations}/>
-    </div>
+    </motion.div>
   )
 }
 
