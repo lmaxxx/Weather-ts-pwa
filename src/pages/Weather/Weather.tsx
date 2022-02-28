@@ -5,6 +5,7 @@ import {useEffect} from "react";
 import UnitOfTemperatureToggle from "../../components/UnitOfTemperatureToggle/UnitOfTemperatureToggle";
 import CurrentWeather from "../../components/CurrentWeather/CurrentWeather";
 import {motion} from "framer-motion";
+import {CircularProgress} from "@chakra-ui/react";
 
 const variants = {
   exit: {
@@ -23,7 +24,11 @@ const Weather = () => {
     getForecast(city)
   }, [])
 
-  if(isLoading) return <>loading</>
+  if(isLoading) return (
+    <div className={classes.WeatherLoaderWrapper}>
+      <CircularProgress size={"100px"} isIndeterminate color='green.300' />
+    </div>
+  )
 
   return (
     <motion.div variants={variants} exit={"exit"} className={classes.Weather}>
