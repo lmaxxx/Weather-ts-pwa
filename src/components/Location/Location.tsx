@@ -3,6 +3,7 @@ import {FC} from 'react'
 import {motion} from 'framer-motion'
 import {ISearchedLocation} from "../../types";
 import {Box, Heading, Text} from "@chakra-ui/react";
+import Region from "../../UI/Region";
 
 interface PropsType {
   location: ISearchedLocation
@@ -38,12 +39,13 @@ const Location: FC<PropsType> = ({location, index, redirectToLocation}) => {
       whileHover={"hover"}
       onClick={redirectToLocation}
     >
-      <Box p={2} shadow='md' w={400} mt={3} borderWidth='1px' rounded='md'>
+      <Box p={2} shadow='md' w={"100%"} mt={3} borderWidth='1px' rounded='md'>
         <Heading fontSize='ld'>{location.name}</Heading>
-        <Text mt={1}>
-          {location.region.trim() && `${location.region} / `}
-          {location.country}
-        </Text>
+        <Region
+          mt={1}
+          region={location.region}
+          country={location.country}
+        />
       </Box>
     </motion.li>
   )
