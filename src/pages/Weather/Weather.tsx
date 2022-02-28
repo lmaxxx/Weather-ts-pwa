@@ -2,10 +2,12 @@ import classes from './Weather.module.scss'
 import {useParams} from "react-router-dom";
 import useForecast from "../../hooks/useForecast";
 import {useEffect} from "react";
+import UnitOfTemperatureToggle from "../../components/UnitOfTemperatureToggle/UnitOfTemperatureToggle";
+import CurrentWeather from "../../components/CurrentWeather/CurrentWeather";
 
 const Weather = () => {
   const {city} = useParams()
-  const {error, isLoading, forecast, getForecast} = useForecast()
+  const {isLoading, getForecast, forecast} = useForecast()
 
   useEffect(() => {
     getForecast(city)
@@ -15,8 +17,8 @@ const Weather = () => {
 
   return (
     <div className={classes.Weather}>
-      {city}
-      <img src={forecast?.current?.condition.icon} alt=""/>
+      <CurrentWeather currentForecast={forecast.current} location={forecast.location}/>
+      <UnitOfTemperatureToggle/>
     </div>
   )
 }
