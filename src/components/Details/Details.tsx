@@ -12,7 +12,7 @@ const Details: FC<PropsType> = ({details}) => {
     <div className={classes.Details}>
       {
         details.map((detail: IDetail) => (
-          <Detail detail={detail}/>
+          <Detail key={detail.name} detail={detail}/>
         ))
       }
     </div>

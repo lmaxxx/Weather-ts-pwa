@@ -2,10 +2,20 @@ import classes from './LocationForm.module.scss'
 import {FC, FormEvent} from 'react'
 import { Input, Button, Flex } from '@chakra-ui/react'
 import useBindInput from "../../hooks/useBindInput";
+import {motion} from "framer-motion";
 
 interface PropsType {
   searchLocation: (query: string) => void
   isLoading: boolean
+}
+
+const variants = {
+  initial: {
+    opacity: 0
+  },
+  animate: {
+    opacity: 1
+  }
 }
 
 const LocationForm: FC<PropsType> = ({searchLocation, isLoading}) => {
@@ -25,7 +35,13 @@ const LocationForm: FC<PropsType> = ({searchLocation, isLoading}) => {
   }
 
   return (
-    <form onSubmit={submit} className={classes.LocationForm}>
+    <motion.form
+      onSubmit={submit}
+      className={classes.LocationForm}
+      animate={"animate"}
+      initial={"initial"}
+      variants={variants}
+    >
       <Flex align="center" justify="space-between">
         <Input
           {...bind}
@@ -41,7 +57,7 @@ const LocationForm: FC<PropsType> = ({searchLocation, isLoading}) => {
           isLoading={isLoading}
         >Search</Button>
       </Flex>
-    </form>
+    </motion.form>
   )
 }
 
