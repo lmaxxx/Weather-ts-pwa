@@ -34,11 +34,6 @@ const getCurrentForecastDetails = (
     unit: '%',
   },
   {
-    name: 'Cloud cover',
-    value: currentForecast?.cloud,
-    unit: '%',
-  },
-  {
     name: 'Visibility',
     value: currentForecast?.vis_km,
     unit: 'km',
