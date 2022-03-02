@@ -5,11 +5,20 @@ import {useEffect} from "react";
 import UnitOfTemperatureToggle from "../../components/UnitOfTemperatureToggle/UnitOfTemperatureToggle";
 import CurrentWeather from "../../components/CurrentWeather/CurrentWeather";
 import {motion} from "framer-motion";
-import {CircularProgress} from "@chakra-ui/react";
+import {CircularProgress, Portal} from "@chakra-ui/react";
 
 const variants = {
   exit: {
     x: "100%",
+    transition: {
+      duration: .7
+    }
+  },
+  initial: {
+    x: "100%"
+  },
+  animate: {
+    x: 0,
     transition: {
       duration: .7
     }
@@ -31,9 +40,17 @@ const Weather = () => {
   )
 
   return (
-    <motion.div variants={variants} exit={"exit"} className={classes.Weather}>
+    <motion.div
+      variants={variants}
+      exit={"exit"}
+      initial={"initial"}
+      animate={"animate"}
+      className={classes.Weather}
+    >
       <CurrentWeather currentForecast={forecast.current} location={forecast.location}/>
-      <UnitOfTemperatureToggle/>
+      <Portal>
+        <UnitOfTemperatureToggle/>
+      </Portal>
     </motion.div>
   )
 }
